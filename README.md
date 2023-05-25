@@ -4,6 +4,12 @@ This Dapp serves as an example of a minimum viable Dapp.
 Text typed into the text field is written to the blockchain. 
 The last text written to the blockchain is displayed on the page.
 
+Prerequisites:
+node version 17 dowload the zip from https://nodejs.org/download/release/v17.9.1/
+install somewhere and alther the PATH
+make sure
+    node --version
+
 To install:
 
     npm ci
@@ -11,6 +17,9 @@ To install:
     #NETWORK_ID=
     #RPC_PROVIDER=
     #SECRET=
+
+then issue command
+
     npx truffle deploy --network env 
 
 To use:

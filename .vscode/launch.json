@@ -7,11 +7,26 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Launch Chrome against localhost",
+            "name": "Chrome W2",
             "url": "http://localhost:3000",
             "webRoot": "${workspaceFolder}",
             "userDataDir": false,
-
-        }
+            "runtimeArgs": [
+                "--user-data-dir=C:\\Users\\josel\\AppData\\Local\\Google\\Chrome\\DebugVSCode",
+                "--profile-directory=Profile 2",
+            ]
+        },
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Chrome wsl2",
+            "url": "http://localhost:3000",
+            "webRoot": "${workspaceFolder}",
+            "userDataDir": false,
+            "runtimeArgs": [
+                "--user-data-dir=\\\\wsl$\\Ubuntu${workspaceFolder}/.vscode/userdatadir",
+                "--profile-directory=Profile 2",
+                ]
+        },
     ]
 }
