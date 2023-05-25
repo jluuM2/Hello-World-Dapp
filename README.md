@@ -5,16 +5,35 @@ Text typed into the text field is written to the blockchain.
 The last text written to the blockchain is displayed on the page.
 
 To install:
-npm ci
-npx truffle deploy --network env #must supply a .env file
+
+    npm ci
+    #for the next step, you must supply a .env file containing 
+    #NETWORK_ID=
+    #RPC_PROVIDER=
+    #SECRET=
+    npx truffle deploy --network env 
 
 To use:
-Open Ganache.
-Connect to MetaMask by pasting Ganache's mnemonic as MetaMask's Secret Recovery Phrase.
-cd into the directory root. 
-If the contract has changed. 
->> truffle migrate
 Run the app
->> npm start
+
+    npm start
+
 In the browser window that opens, type in the text field and hit enter. 
 Confirm the transaction in MetaMask and the displayed text is updated!
+
+To debug using vscode:
+- create a specific chrome profile
+  - invoke chrome from the command line:
+
+    "c:\Program Files\Google\Chrome\Application\chrome.exe"
+  - create a profile named MetaMask
+  - find the profile directory: chrome://version/
+  - install metamask in this profile (from the webstore)
+  - create a wallet (which will not be used)
+  - add network Polygon Mumbai
+    - RPC URL: https://polygon-mumbai.infura.io/v3/<yourkey>
+    - ChainID: 80001
+    - Currency Symbol: MATIC
+    - Block explorer: https://mumbai.polygonscan.com/
+  - import an account 
+- replace the profile directory in the launch.json
