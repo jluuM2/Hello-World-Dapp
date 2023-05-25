@@ -22,6 +22,10 @@
 //
 // const fs = require('fs');
 // const mnemonic = fs.readFileSync(".secret").toString().trim();
+require('dotenv').config();
+const HDWalletProvider = require("@truffle/hdwallet-provider");
+net=require('net');
+Web3=require('web3');
 
 module.exports = {
   /**
@@ -34,8 +38,8 @@ module.exports = {
    * $ truffle test --network <network-name>
    */
 
-    contracts_directory: './src/contracts/',
-    contracts_build_directory: './src/abis/',
+  contracts_directory: "./src/contracts/",
+  contracts_build_directory: "./src/abis/",
 
   networks: {
     // Useful for testing. The `development` name is special - truffle uses it by default
@@ -45,10 +49,19 @@ module.exports = {
     // options below to some value.
     //
     development: {
-      host: "127.0.0.1",     // Localhost (default: none)
-      port: 7545,            // Standard Ethereum port (default: none)
-      network_id: "*",       // Any network (default: none)
-     },
+      host: "127.0.0.1", // Localhost (default: none)
+      port: 7545, // Standard Ethereum port (default: none)
+      network_id: "*", // Any network (default: none)
+    },
+    env: {
+        network_id: process.env.NETWORK_ID,
+        provider: () => {
+        return new HDWalletProvider(process.env.SECRET, process.env.RPC_PROVIDER)
+      },
+      SkipDryRun: true,
+      gas:10000000
+    },
+
     // Another network with more advanced options...
     // advanced: {
     // port: 8777,             // Custom port
@@ -82,18 +95,19 @@ module.exports = {
   },
 
   // Configure your compilers
+  // Configure your compilers
   compilers: {
-  //  solc: {
-      // version: "0.5.1",    // Fetch exact version from solc-bin (default: truffle's version)
+    solc: {
+      version: '0.8.17', // Fetch exact version from solc-bin (default: truff    le's version)
       // docker: true,        // Use "0.5.1" you've installed locally with docker (default: false)
-  //     settings: {          // See the solidity docs for advice about optimization and evmVersion
-  //      optimizer: {
-  //        enabled: false,
-  //        runs: 200
-  //      },
-      //  evmVersion: "byzantium"
-  //     }
-  //  }
+      settings: { // See the solidity docs for advice about optimization and evmVersion
+        optimizer: {
+          enabled: true,
+          runs: 200
+        }
+        //  evmVersion: "byzantium"
+      }
+    }
   },
 
   // Truffle DB is currently disabled by default; to enable it, change enabled: false to enabled: true
@@ -103,6 +117,6 @@ module.exports = {
   // $ truffle migrate --reset --compile-all
 
   db: {
-    enabled: false
-  }
+    enabled: false,
+  },
 };
