@@ -4,6 +4,10 @@ This Dapp serves as an example of a minimum viable Dapp.
 Text typed into the text field is written to the blockchain. 
 The last text written to the blockchain is displayed on the page.
 
+To install:
+npm ci
+npx truffle deploy --network env #must supply a .env file
+
 To use:
 Open Ganache.
 Connect to MetaMask by pasting Ganache's mnemonic as MetaMask's Secret Recovery Phrase.
